@@ -1,0 +1,22 @@
+.button {
+  width: 150px;
+  height: 35px;
+  border: 1px solid #054a29;
+  border-radius: 150px;
+  background-color: white;
+  color: #054a29;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  transition: all 500ms ease;
+}
+
+.button:hover {
+  background-color: #d5e0db;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #d5e0db;
+  border: 1px solid #01180d;
+}
