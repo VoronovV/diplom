@@ -1,6 +1,5 @@
-import React from "react";
 import style from "./header.module.css";
-
+import { Link } from "react-router-dom";
 import Green_button from "../Buttons/Green_button/Green_button";
 import White_button from "../Buttons/White_button/White_button";
 
@@ -11,11 +10,10 @@ export default function Header() {
         <img src="public\LOGO_L.svg" alt="logo" />
       </div>
       <div className={style.buttons}>
-        <White_button></White_button>
-
-        <div>switch</div>
-        <White_button></White_button>
-        <Green_button></Green_button>
+        <Link to={"/login"}>Избранное</Link>
+        {/* изменит стили */}
+        <White_button to="/create">Создать курс</White_button>
+        <Green_button to="/login">Войти</Green_button>
       </div>
     </div>
   );
