@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Layout, Menu, Breadcrumb, Button, Input } from "antd";
 
 import Header from "../../components/Header/Header";
-import style from "./CoursePage.module.css";
+import styles from "./CoursePage.module.css";
 
 const { Content, Sider } = Layout;
 const { TextArea } = Input;
@@ -118,10 +118,10 @@ export default function CoursePage() {
               style={{ padding: 24, minHeight: 360 }}
             >
               <h3>Оставить отзыв</h3>
-              <div className={style.block__area}>
+              <div className={styles.block__area}>
                 <div>
                   <TextArea
-                    className={style.textArea}
+                    className={styles.textArea}
                     rows={1}
                     placeholder="Введите комментарий"
                   />
@@ -132,12 +132,12 @@ export default function CoursePage() {
                   </div>
                 </div>
               </div>
-              <div className={style.block__comment}>
-                <div className={style.block__login}>
-                  <div className={style.login}>Nina</div>
+              <div className={styles.block__comment}>
+                <div className={styles.block__login}>
+                  <div className={styles.login}>Nina</div>
                   <div style={{ color: "gray" }}>04.06.2024</div>
                 </div>
-                <div className={style.comment}>Отличный курс!</div>
+                <div className={styles.comment}>Отличный курс!</div>
               </div>
             </div>
           </Content>
