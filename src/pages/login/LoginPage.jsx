@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./LoginPage.module.css";
+import getUserAndLogin from "../../firebase/actions/getUserAndLogin";
+import { useDispatch } from "react-redux";
+import { fetchUserByLogin } from "../../store/slices/activeUserSlice";
 
 export default function LoginPage() {
+  const [login, setLogin] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    dispatch(await fetchUserByLogin({ login, password }));
+  };
+
+  const handleChangeLogin = (e) => {
+    setLogin(e.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginContainer}>
@@ -19,7 +39,12 @@ export default function LoginPage() {
             name="username"
             rules={[{ required: true, message: "Введите логин!" }]}
           >
-            <Input prefix={<UserOutlined />} placeholder="Введите логин" />
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Введите логин"
+              onChange={handleChangeLogin}
+              value={login}
+            />
           </Form.Item>
           <Form.Item
             name="password"
@@ -28,17 +53,20 @@ export default function LoginPage() {
             <Input.Password
               prefix={<LockOutlined />}
               placeholder="Введите пароль"
+              onChange={handleChangePassword}
+              value={password}
             />
           </Form.Item>
           <Form.Item className={styles.text}>
             У вас еще нет аккаунта?
-            <Link to="/register">Зарегистрироваться</Link>
+            <Link to="/register"> Зарегистрироваться</Link>
           </Form.Item>
           <Form.Item>
             <Button
               type="primary"
               htmlType="submit"
               className={styles.loginButton}
+              onClick={handleSubmit}
             >
               Войти в аккаунт
             </Button>

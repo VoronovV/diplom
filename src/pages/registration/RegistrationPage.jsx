@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./RegistrationPage.module.css";
+import register from "@/firebase/actions/register";
+import { useDispatch } from "react-redux";
 
 export default function RegistrationPage() {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const [login, setLogin] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const validatePassword = (_, value) => {
     if (!value || form.getFieldValue("password") === value) {
       return Promise.resolve();
     }
     return Promise.reject(new Error("Пароли не совпадают!"));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await register({ login, email, password }, dispatch);
+  };
+
+  const handleChangeLogin = (e) => {
+    setLogin(e.target.value);
+  };
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -29,7 +53,23 @@ export default function RegistrationPage() {
             name="username"
             rules={[{ required: true, message: "Введите логин!" }]}
           >
-            <Input prefix={<UserOutlined />} placeholder="Введите логин" />
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Введите логин"
+              onChange={handleChangeLogin}
+              value={login}
+            />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            rules={[{ required: true, message: "Введите email!" }]}
+          >
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Введите email"
+              onChange={handleChangeEmail}
+              value={email}
+            />
           </Form.Item>
           <Form.Item
             name="password"
@@ -38,6 +78,8 @@ export default function RegistrationPage() {
             <Input.Password
               prefix={<LockOutlined />}
               placeholder="Введите пароль"
+              onChange={handleChangePassword}
+              value={password}
             />
           </Form.Item>
           <Form.Item
@@ -62,6 +104,7 @@ export default function RegistrationPage() {
               type="primary"
               htmlType="submit"
               className={styles.loginButton}
+              onClick={handleSubmit}
             >
               Регистрация
             </Button>

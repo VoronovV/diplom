@@ -3,6 +3,7 @@ import LoginPage from "./pages/login/LoginPage";
 import CoursePage from "./pages/Course/CoursePage.jsx";
 import RegistrationPage from "./pages/registration/RegistrationPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import IsAuthProvider from "./firebase/isAuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +26,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div>
+    <IsAuthProvider>
       <RouterProvider router={router} />
-    </div>
+    </IsAuthProvider>
   );
 }
 
