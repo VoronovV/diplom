@@ -4,6 +4,7 @@ import CoursePage from "./pages/Course/CoursePage.jsx";
 import RegistrationPage from "./pages/registration/RegistrationPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import IsAuthProvider from "./firebase/isAuthProvider.jsx";
+import CreatePage from "./pages/Create_page/CreatePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/course",
     element: <CoursePage />,
+  },
+  {
+    path: "/create",
+    element: <CreatePage />,
   },
 ]);
 

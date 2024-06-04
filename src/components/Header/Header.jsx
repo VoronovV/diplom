@@ -10,8 +10,10 @@ export default function Header() {
         <img src="public\LOGO_L.svg" alt="logo" />
       </div>
       <div className={style.buttons}>
-        <Link to={"/login"}>Избранное</Link>
-        {/* изменит стили */}
+        <Link to={"/"} className={style.favorite}>
+          Избранное
+        </Link>
+
         <White_button to="/create">Создать курс</White_button>
         <Green_button to="/login">Войти</Green_button>
       </div>

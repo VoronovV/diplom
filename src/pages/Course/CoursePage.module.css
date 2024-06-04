@@ -1,0 +1,48 @@
+.textArea{
+    width: 784px;
+    border-radius: 16px;
+    border: 1px solid #929399;
+    margin-right: 24px;
+}
+
+.block__area{
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+.button{
+    text-decoration: none;
+    background: white;
+    color: #054A29;
+    padding: 8px 24px;
+    border-radius: 150px;
+}
+
+.button:hover{
+    color: white;
+    background: #054A29;
+}
+
+.block__comment{
+    display: inline-block;
+    border: 1px solid #054A29;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px 26px;
+}
+
+.block__login{
+    display: flex;
+    margin-top: 20px;
+}
+.login{
+    margin-right: 10px;
+    font-weight: bold;
+}
+.comment{
+    display: inline-block;
+    border: 1px solid #929399;
+    padding: 8px 24px;
+    margin-top: 5px;
+    border-radius: 150px;
+}

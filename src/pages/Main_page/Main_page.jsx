@@ -130,11 +130,7 @@ export default function Main_page() {
             ))}
           </Row>
         </div>
-        <div className={styles.add_cards}>
-          <Link to="/course">
-            <White_button to="/course">Создать курс</White_button>
-          </Link>
-        </div>
+        <div className={styles.add_cards}></div>
       </main>
       <AppFooter></AppFooter>
     </div>

@@ -14,3 +14,12 @@
   align-items: center;
   gap: 10px;
 }
+
+.favorite {
+  text-decoration: none;
+  color: black;
+}
+
+.favorite:hover {
+  color: #054a29;
+}

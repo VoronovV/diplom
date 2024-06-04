@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Layout, Menu, Breadcrumb, Button, Input } from "antd";
 
 import Header from "../../components/Header/Header";
+import style from "./CoursePage.module.css";
 
 const { Content, Sider } = Layout;
 const { TextArea } = Input;
@@ -28,7 +29,8 @@ export default function CoursePage() {
   const courses = [
     {
       title: "Математика",
-      description: "Описание курса Математика",
+      description:
+        "Сайт представляет собой уроки по математике, которые упорядочены по принципу «от простого к сложному». Каждый урок затрагивает одну или несколько тем из математики. Уроки разбиты на шаги. Начинать изучение следует с первого шага и далее по возрастанию.Каждый пройденный урок обязательно должен быть усвоен. Поэтому, не поняв одного урока, нельзя переходить к следующему, поскольку каждый урок в математике основан на понимании предыдущего. Если Вы с первого раза урок не поняли – не расстраивайтесь. Знайте, что некоторые люди потратили месяцы и годы, чтобы понять хотя бы одну единственную тему. Отчаяние и уныние точно не ваш путь. Читайте, изучайте, пробуйте и снова пробуйте.Математика хорошо усваивается, когда человек самостоятельно открыв учебник, учит самогó себя. При этом вырабатывается определенная дисциплина, которая очень помогает в будущем. Если Вы будете придерживаться принципа «от простого к сложному», то с удивлением обнаружите, что математика не так уж и сложна. Возможно даже она покажется вам интересной и увлекательной.Что даст вам знание математики? Во-первых, уверенность. Математику знает не каждый, поэтому осознание того, что вы знаете хоть какую-то часть этой серьёзной науки, делает вас особенным. Во-вторых, освоив математику, вы с лёгкостью освоите другие науки и сможете мыслить гораздо шире. Знание математики позволяет овладеть такими профессиями как программист, бухгалтер, экономист. Никто не станет спорить, что эти профессии сегодня очень востребованы.",
       themes: [
         {
           title: "Тема 1",
@@ -49,23 +51,33 @@ export default function CoursePage() {
     <div>
       <Header></Header>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider>
-          <Menu theme="Vertical " defaultSelectedKeys={["1"]} mode="inline">
+        <Sider style={{ background: "white" }}>
+          <Menu
+            style={{ background: "white" }}
+            theme="Vertical "
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+          >
             {/* Меню со списком курсов */}
             {courses.map((course, index) => (
               <SubMenu
+                style={{ color: "black" }}
                 key={`course-${index}`}
                 title={course.title}
                 onClick={() => handleCourseSelect(course)}
               >
                 {course.themes.map((theme, idx) => (
                   <SubMenu
+                    style={{ color: "black" }}
                     key={`theme-${index}-${idx}`}
                     title={theme.title}
                     onClick={() => handleThemeSelect(theme)}
                   >
                     {theme.lessons.map((lesson, lessonIdx) => (
-                      <Menu.Item key={`lesson-${index}-${idx}-${lessonIdx}`}>
+                      <Menu.Item
+                        style={{ color: "black" }}
+                        key={`lesson-${index}-${idx}-${lessonIdx}`}
+                      >
                         {lesson}
                       </Menu.Item>
                     ))}
@@ -105,11 +117,28 @@ export default function CoursePage() {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              <h3>Оставить комментарий</h3>
-              <TextArea rows={4} placeholder="Введите комментарий" />
-              <Button type="primary" style={{ marginTop: "8px" }}>
-                Отправить
-              </Button>
+              <h3>Оставить отзыв</h3>
+              <div className={style.block__area}>
+                <div>
+                  <TextArea
+                    className={style.textArea}
+                    rows={1}
+                    placeholder="Введите комментарий"
+                  />
+                </div>
+                <div>
+                  <div>
+                    <a className={style.button}>Отправить</a>
+                  </div>
+                </div>
+              </div>
+              <div className={style.block__comment}>
+                <div className={style.block__login}>
+                  <div className={style.login}>Nina</div>
+                  <div style={{ color: "gray" }}>04.06.2024</div>
+                </div>
+                <div className={style.comment}>Отличный курс!</div>
+              </div>
             </div>
           </Content>
         </Layout>

@@ -22,21 +22,7 @@ const AppFooter = () => {
         align="middle"
         style={{ backgroundColor: "#f5f5f5" }}
       >
-        <Col span={8} style={{ backgroundColor: "#f5f5f5" }}>
-          <img
-            src={"publicLOGO_L.svg"}
-            //   переделать ссылку
-            alt="logo"
-            style={{
-              maxWidth: "100px",
-              marginBottom: "16px",
-              backgroundColor: "#f5f5f5",
-            }}
-          />
-          <p style={{ backgroundColor: "#f5f5f5" }}>
-            Короткий текст о вашем сайте
-          </p>
-        </Col>
+        <Col span={8} style={{ backgroundColor: "#f5f5f5" }}></Col>
         <Col span={8} style={{ backgroundColor: "#f5f5f5" }}>
           <a href="ссылка на Facebook">
             <FacebookOutlined

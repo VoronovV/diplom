@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./RegistrationPage.module.css";
 import register from "@/firebase/actions/register";
@@ -12,6 +12,7 @@ export default function RegistrationPage() {
   const [login, setLogin] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const validatePassword = (_, value) => {
     if (!value || form.getFieldValue("password") === value) {
@@ -23,7 +24,13 @@ export default function RegistrationPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await register({ login, email, password }, dispatch);
+    try {
+      await register({ login, email, password }, dispatch);
+      navigate("/"); // Перенаправление на страницу входа после успешной регистрации
+    } catch (error) {
+      console.error("Ошибка регистрации:", error);
+      // Дополнительная логика обработки ошибок (например, уведомление пользователя)
+    }
   };
 
   const handleChangeLogin = (e) => {
